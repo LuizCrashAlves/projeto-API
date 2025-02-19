@@ -1,5 +1,8 @@
-const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
+const url = "https://pokeapi.co/api/v2/pokemon";
 const header = {"Content-type": "application/json"};
+const pokeSearch = document.getElementById("search");
+const poke = document.getElementById("pokemon");
+let pokemons = [];
 
 fetch( url, {
     method: "GET",
@@ -13,16 +16,30 @@ fetch( url, {
     return response.json();
 })
 .then(data => {
-    console.log(data);
-    const pokemon = document.getElementById("pokemon");
-    pokemon.innerHTML = "";
-
-    data.results.forEach(pokemon => {
-        const pokeList = document.createElement("p");
-        pokeList.textContent = pokemon.name;
-        pokemon.appendChild(pokeList);
-    });
+    pokemons = data.results;
 })
 .catch(error => {
     console.error("Erro:", error);
+});
+
+function finding(result) {
+    const results = pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(result.toLowerCase()));
+    console.log(result)
+
+    poke.innerHTML = "";
+
+    if (results.length > 0) {
+        results.forEach(pokemon => {
+            const create = document.createElement("div");
+            create.textContent = pokemon.name;
+            poke.appendChild(create);
+        });
+    } else {
+        poke.textContent = "Nenhum Pokemon encontrado!!!";
+    }
+}
+
+pokeSearch.addEventListener("input", function() {
+    const result = pokeSearch.value;
+    finding(result);
 });
