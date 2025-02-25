@@ -47,10 +47,12 @@ pokeSelect.addEventListener("input", function() {
             const types = pokemonData.types.map(typeInfo => typeInfo.type.name).join(", ");
             const habilities = pokemonData.abilities.map(habilityInfo => habilityInfo.ability.name).join(", ");
             poke.innerHTML = `
-                <h2>${pokemonData.name}</h2>
-                <p><strong>Tipos:</strong> ${types}</p>
-                <p><strong>Habilidades:</strong> ${habilities}</p>
-                <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+            <div>    
+                <h2 class"object2">${pokemonData.name}</h2>
+                <p class"object2"><strong>Tipos:</strong> ${types}</p>
+                <p class"object2"><strong>Habilidades:</strong> ${habilities}</p>
+                <img class"object2" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+            </div>
             `;
         })
         .catch(error => {

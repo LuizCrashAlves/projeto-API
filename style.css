@@ -1,5 +1,48 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+}
+
+.object1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+}
+
+#pokeSelect {
+    display: flex;
+    align-items: center;
+    border-radius: 25px;
+    background: linear-gradient(145deg, burlywood, tomato );
+    border: 2px solid #ccc; /* borda sutil */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    appearance: none; /* remove o estilo padrão do dropdown */
+    outline: none;
+    transition: all 0.3s ease; /* transição suave para interação */
+    cursor: pointer;
+}
+
+#pokeSelect:focus {
+    border-color: #ffa500;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+}
+
+option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pokemon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
