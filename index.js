@@ -39,7 +39,7 @@ pokeSelect.addEventListener("input", function() {
         })
         .then(response => {
             if(!response.ok) {
-                throw new Error("Erro para encontrar os detalhes do Pokemon " + response.status);
+                throw new Error("Erro para encontrar os detalhes do seu Pokemon " + response.status);
             }
             return response.json();
         })
