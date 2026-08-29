@@ -2,19 +2,23 @@ const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
 const header = {"Content-type": "application/json"};
 const pokeSelect = document.getElementById("pokeSelect");
 const poke = document.getElementById("pokemon");
+// const selection = document.querySelector("button");
 let pokemons = [];
+let myPokemon = [];
 
+// Fetch para pegar as informações dos pokemons
 fetch( url, {
     method: "GET",
     headers: header
 })
-
+// Recebe a resposta e retorna o .json ou passa o status do erro
 .then(response => {
     if (!response.ok) {
         throw new Error("Erro na requisição" + response.status);
     }
     return response.json();
 })
+// Com o .json cria um select no DOM com os names
 .then(data => {
     pokemons = data.results;
     pokemons.forEach(pokemon => {
@@ -24,11 +28,12 @@ fetch( url, {
         pokeSelect.appendChild(create);
     })
 })
+// trata o erro
 .catch(error => {
     console.error("Erro:", error);
 });
 
-
+// Evento para inserir as informações na tela
 pokeSelect.addEventListener("input", function() {
     const pokeUrl = pokeSelect.value;
     
@@ -54,6 +59,9 @@ pokeSelect.addEventListener("input", function() {
                 <img class"object2" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
             </div>
             `;
+
+            myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //selecionando o pokemon
+            console.log(myPokemon);
         })
         .catch(error => {
             console.error("Erro:", error);
@@ -62,3 +70,4 @@ pokeSelect.addEventListener("input", function() {
         poke.innerHTML = "";
     }
 });
+console.log(myPokemon);
