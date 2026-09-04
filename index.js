@@ -2,9 +2,11 @@ const url = "https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0";
 const header = {"Content-type": "application/json"};
 const pokeSelect = document.getElementById("pokeSelect");
 const poke = document.getElementById("pokemon");
+const myBag = document.getElementById("myBag");
 // const selection = document.querySelector("button");
 let pokemons = [];
 let myPokemon = [];
+let storagePokemons = [];
 
 // Fetch para pegar as informações dos pokemons
 fetch( url, {
@@ -60,8 +62,19 @@ pokeSelect.addEventListener("input", function() {
             </div>
             `;
 
-            myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //selecionando o pokemon
-            console.log(myPokemon);
+            if (myPokemon.length < 6) {
+                myBag.innerHTML = "Sua Bolsa está cheia"//Conferencia se foi selecionado a quantidade de pokemons
+                storagePokemons.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities])
+            } else {
+                myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //Selecionando o pokemon
+                myBag.innerHTML = `
+                <div>    
+                    <h2 class"object2">${pokemonData.name}</h2>
+                    <p class"object2"><strong>Tipos:</strong> ${types}</p>
+                    <p class"object2"><strong>Habilidades:</strong> ${habilities}</p>
+                    <img class"object2" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+                </div>`
+            }
         })
         .catch(error => {
             console.error("Erro:", error);
@@ -70,4 +83,3 @@ pokeSelect.addEventListener("input", function() {
         poke.innerHTML = "";
     }
 });
-console.log(myPokemon);
