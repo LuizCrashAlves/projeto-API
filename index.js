@@ -62,12 +62,11 @@ pokeSelect.addEventListener("input", function() {
             </div>
             `;
 
-            if (myPokemon.length > 6) {
+            if (myPokemon.length > 5) {
                 myBag.insertAdjacentHTML('beforeend', "Sua Bolsa está cheia")//Conferencia se foi selecionado a quantidade de pokemons
                 storagePokemons.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities])
             } else {
                 myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //Selecionando o pokemon
-                console.log(myPokemon);
                 myBag.insertAdjacentHTML('beforeend', `
                 <div>    
                     <h2 class"object2">${pokemonData.name}</h2>
