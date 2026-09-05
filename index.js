@@ -67,13 +67,15 @@ pokeSelect.addEventListener("input", function() {
                 storagePokemons.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities])
             } else {
                 myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //Selecionando o pokemon
-                myBag.innerHTML = `
-                <div>    
-                    <h2 class"object2">${pokemonData.name}</h2>
-                    <p class"object2"><strong>Tipos:</strong> ${types}</p>
-                    <p class"object2"><strong>Habilidades:</strong> ${habilities}</p>
-                    <img class"object2" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-                </div>`
+                for (let i = 0; myPokemon.length < i; i++ ) {
+                    myBag.innerHTML = `
+                    <div>    
+                        <h2 class"object2">${pokemonData.name}</h2>
+                        <p class"object2"><strong>Tipos:</strong> ${types}</p>
+                        <p class"object2"><strong>Habilidades:</strong> ${habilities}</p>
+                        <img class"object2" src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
+                    </div>`
+                }
             }
         })
         .catch(error => {
