@@ -67,6 +67,7 @@ pokeSelect.addEventListener("input", function() {
                 storagePokemons.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities])
             } else {
                 myPokemon.push([pokemonData.name, pokemonData.sprites.front_default, types, habilities]); //Selecionando o pokemon
+                console.log(myPokemon);
                 for (let i = 0; myPokemon.length < i; i++ ) {
                     myBag.innerHTML = `
                     <div>    
