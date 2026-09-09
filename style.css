@@ -45,6 +45,7 @@ option {
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 30px;
 }
 
 #myBag {
@@ -52,6 +53,7 @@ option {
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 30px;
 }
 
 button {
